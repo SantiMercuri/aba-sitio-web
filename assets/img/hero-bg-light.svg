@@ -59,34 +59,34 @@
 
   <!-- Los cuatro palos: mismas posiciones, escalas y demoras que la
        variante oscura, recoloreados para leerse sobre fondo claro. -->
-  <g fill="#3D4B4D"> <!-- picas: pizarra oscura (antes hueso pálido, invisible aquí) -->
-    <g class="fall" style="animation-delay:-.5s"><use href="#s-spade" transform="translate(150,120) scale(3.6) rotate(-12)" opacity=".12"/></g>
-    <g class="fall" style="animation-delay:-3.8s"><use href="#s-spade" transform="translate(1240,760) scale(3.2) rotate(8)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-7.2s"><use href="#s-spade" transform="translate(980,80) scale(2.4) rotate(30)" opacity=".08"/></g>
-    <g class="fall" style="animation-delay:-10.6s"><use href="#s-spade" transform="translate(650,900) scale(2.8) rotate(-22)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-13.1s"><use href="#s-spade" transform="translate(1500,300) scale(2.2) rotate(15)" opacity=".08"/></g>
-    <g class="fall" style="animation-delay:-1.9s"><use href="#s-spade" transform="translate(30,700) scale(2)" opacity=".07"/></g>
+  <g fill="#1E2E31"> <!-- picas: pizarra más profunda, con más presencia que un gris lavado -->
+    <g class="fall" style="animation-delay:-.5s"><use href="#s-spade" transform="translate(150,120) scale(3.6) rotate(-12)" opacity=".16"/></g>
+    <g class="fall" style="animation-delay:-3.8s"><use href="#s-spade" transform="translate(1240,760) scale(3.2) rotate(8)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-7.2s"><use href="#s-spade" transform="translate(980,80) scale(2.4) rotate(30)" opacity=".12"/></g>
+    <g class="fall" style="animation-delay:-10.6s"><use href="#s-spade" transform="translate(650,900) scale(2.8) rotate(-22)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-13.1s"><use href="#s-spade" transform="translate(1500,300) scale(2.2) rotate(15)" opacity=".12"/></g>
+    <g class="fall" style="animation-delay:-1.9s"><use href="#s-spade" transform="translate(30,700) scale(2)" opacity=".11"/></g>
   </g>
-  <g fill="#D93628"> <!-- corazones: rojo de marca -->
-    <g class="fall" style="animation-delay:-2.4s"><use href="#s-heart" transform="translate(400,760) scale(4) rotate(-10)" opacity=".13"/></g>
-    <g class="fall" style="animation-delay:-6.1s"><use href="#s-heart" transform="translate(1120,900) scale(2.4) rotate(20)" opacity=".09"/></g>
-    <g class="fall" style="animation-delay:-9.4s"><use href="#s-heart" transform="translate(80,300) scale(2)" opacity=".08"/></g>
-    <g class="fall" style="animation-delay:-12.7s"><use href="#s-heart" transform="translate(1500,860) scale(2.6) rotate(-14)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-4.9s"><use href="#s-heart" transform="translate(760,40) scale(2.1) rotate(9)" opacity=".07"/></g>
+  <g fill="#E2301C"> <!-- corazones: rojo de marca, más saturado -->
+    <g class="fall" style="animation-delay:-2.4s"><use href="#s-heart" transform="translate(400,760) scale(4) rotate(-10)" opacity=".18"/></g>
+    <g class="fall" style="animation-delay:-6.1s"><use href="#s-heart" transform="translate(1120,900) scale(2.4) rotate(20)" opacity=".13"/></g>
+    <g class="fall" style="animation-delay:-9.4s"><use href="#s-heart" transform="translate(80,300) scale(2)" opacity=".12"/></g>
+    <g class="fall" style="animation-delay:-12.7s"><use href="#s-heart" transform="translate(1500,860) scale(2.6) rotate(-14)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-4.9s"><use href="#s-heart" transform="translate(760,40) scale(2.1) rotate(9)" opacity=".11"/></g>
   </g>
-  <g fill="#2F7A52"> <!-- tréboles: verde, un tono más oscuro que en la versión nocturna -->
-    <g class="fall" style="animation-delay:-.9s"><use href="#s-club" transform="translate(1360,140) scale(4.2) rotate(18)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-5.3s"><use href="#s-club" transform="translate(210,820) scale(3.8) rotate(-20)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-8.6s"><use href="#s-club" transform="translate(60,540) scale(2.6) rotate(-8)" opacity=".07"/></g>
-    <g class="fall" style="animation-delay:-11.8s"><use href="#s-club" transform="translate(1080,620) scale(2.3) rotate(24)" opacity=".08"/></g>
-    <g class="fall" style="animation-delay:-3.1s"><use href="#s-club" transform="translate(430,260) scale(2)" opacity=".07"/></g>
+  <g fill="#16965A"> <!-- tréboles: verde más vívido -->
+    <g class="fall" style="animation-delay:-.9s"><use href="#s-club" transform="translate(1360,140) scale(4.2) rotate(18)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-5.3s"><use href="#s-club" transform="translate(210,820) scale(3.8) rotate(-20)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-8.6s"><use href="#s-club" transform="translate(60,540) scale(2.6) rotate(-8)" opacity=".11"/></g>
+    <g class="fall" style="animation-delay:-11.8s"><use href="#s-club" transform="translate(1080,620) scale(2.3) rotate(24)" opacity=".12"/></g>
+    <g class="fall" style="animation-delay:-3.1s"><use href="#s-club" transform="translate(430,260) scale(2)" opacity=".11"/></g>
   </g>
-  <g fill="#C6702A"> <!-- diamantes: naranja, un tono más oscuro que en la versión nocturna -->
-    <g class="fall" style="animation-delay:-1.6s"><use href="#s-diamond" transform="translate(1460,540) scale(3.4) rotate(14)" opacity=".14"/></g>
-    <g class="fall" style="animation-delay:-4.6s"><use href="#s-diamond" transform="translate(520,180) scale(2.2) rotate(-16)" opacity=".10"/></g>
-    <g class="fall" style="animation-delay:-7.8s"><use href="#s-diamond" transform="translate(1300,940) scale(2.4) rotate(10)" opacity=".09"/></g>
-    <g class="fall" style="animation-delay:-10.1s"><use href="#s-diamond" transform="translate(160,420) scale(2)" opacity=".07"/></g>
-    <g class="fall" style="animation-delay:-13.9s"><use href="#s-diamond" transform="translate(900,940) scale(2.2) rotate(-8)" opacity=".08"/></g>
+  <g fill="#E67A16"> <!-- diamantes: naranja más vívido -->
+    <g class="fall" style="animation-delay:-1.6s"><use href="#s-diamond" transform="translate(1460,540) scale(3.4) rotate(14)" opacity=".19"/></g>
+    <g class="fall" style="animation-delay:-4.6s"><use href="#s-diamond" transform="translate(520,180) scale(2.2) rotate(-16)" opacity=".14"/></g>
+    <g class="fall" style="animation-delay:-7.8s"><use href="#s-diamond" transform="translate(1300,940) scale(2.4) rotate(10)" opacity=".13"/></g>
+    <g class="fall" style="animation-delay:-10.1s"><use href="#s-diamond" transform="translate(160,420) scale(2)" opacity=".11"/></g>
+    <g class="fall" style="animation-delay:-13.9s"><use href="#s-diamond" transform="translate(900,940) scale(2.2) rotate(-8)" opacity=".12"/></g>
   </g>
 
   <!-- Líneas finas, como los ejes de una mesa de juego -->
