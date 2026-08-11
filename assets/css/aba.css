@@ -372,12 +372,16 @@ button, input, select, textarea { font: inherit; color: inherit; }
   min-height: 44px;
 }
 .brand__mark { width: 42px; height: 53px; flex: none; }
-.brand__text { display: none; text-align: center; }
-@media (min-width: 560px) { .brand__text { display: block; } }
+/* Visible en todos los anchos: en el header móvil hay lugar de sobra
+   una vez que la navegación y el botón "Asociarse" quedan en el menú. */
+.brand__text { display: block; text-align: center; }
 .brand__name {
   font-family: var(--font-display);
-  font-size: 1.06rem; font-weight: 700; line-height: 1.1;
+  font-size: 1.06rem; font-weight: 700; line-height: 1.15;
   letter-spacing: -.01em;
+}
+@media (max-width: 420px) {
+  .brand__name { font-size: .92rem; }
 }
 .brand__tag {
   font-family: var(--font-ui); font-size: .66rem; font-weight: 600;
@@ -627,6 +631,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hero { background-attachment: fixed; }
 }
+/* En pantallas angostas, "cover" sobre un recorte tan vertical agranda
+   tanto la imagen que sólo deja ver una franja angosta del centro —
+   la mayoría de los palos que caen quedan fuera de cuadro. Un tamaño
+   fijo, más cercano al ancho real, muestra buena parte de la
+   composición en vez de un zoom excesivo. */
+@media (max-width: 640px) {
+  .hero { background-size: 150% auto; background-position: center top; }
+}
 
 /* Modo oscuro: fondo generativo oscuro original, con su matiz propio */
 @media (prefers-color-scheme: dark) {
@@ -677,7 +689,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .hero__motes .m1, .hero__motes .m2, .hero__motes .m3, .hero__motes .m4 { animation: none; }
 }
-@media (max-width: 640px) { .hero__motes { display: none; } }
+/* Antes se ocultaban en móvil; ahora quedan, son la señal de movimiento
+   más confiable ahí, ya que no dependen del recorte del fondo generado. */
+@media (max-width: 420px) {
+  .hero__motes .m3, .hero__motes .m4 { display: none; } /* dos alcanzan en pantallas muy angostas */
+}
 
 .hero__grid {
   position: relative;
@@ -1232,6 +1248,9 @@ table.data td.num, table.data th.num { font-variant-numeric: tabular-nums; }
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .affil { background-attachment: fixed; }
+}
+@media (max-width: 640px) {
+  .affil { background-size: 150% auto; background-position: center top; }
 }
 
 @media (prefers-color-scheme: dark) {
