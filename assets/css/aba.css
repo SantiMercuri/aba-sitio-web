@@ -428,11 +428,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: #251D1A; text-decoration: none;
   background: linear-gradient(180deg, #FFFDF9 0%, #F3EADE 100%);
   border-radius: 7px 7px 3px 3px;
+  /* El borde ocupa el mismo espacio en los dos temas (box-sizing:
+     border-box); sólo cambia de color, así no hay salto de layout al
+     alternar. En modo claro la carta queda sobre un header claro, con
+     poco contraste propio — el filo oscuro la separa del fondo. */
+  border: 1px solid rgba(20, 20, 20, .3);
   box-shadow: 0 1px 2px rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .5);
   transform: translateY(0) rotate(0deg);
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
-              background-color var(--dur) var(--ease);
+              background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
+@media (prefers-color-scheme: dark) {
+  .nav__link { border-color: transparent; }
+}
+:root[data-theme="dark"] .nav__link { border-color: transparent; }
+:root[data-theme="light"] .nav__link { border-color: rgba(20, 20, 20, .3); }
 /* Igual que en el índice lateral: palo por pestaña y, agotados los
    cuatro, el resto del vocabulario de la caja de licitación. */
 .nav__link::before {
@@ -602,23 +612,45 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero {
   position: relative;
   isolation: isolate;
+  /* Por defecto (modo claro): el mismo fondo generativo, en su variante
+     clara. Ya no se pisan los tokens de color — el hero simplemente
+     hereda el tema activo de la página, como el resto del sitio. */
   background:
-    linear-gradient(180deg, rgba(13,18,19,.35) 0%, rgba(13,18,19,.72) 88%),
-    url('../img/hero-bg.svg') center 30% / cover no-repeat #14191A;
+    linear-gradient(180deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.55) 88%),
+    url('../img/hero-bg-light.svg') center 30% / cover no-repeat var(--paper);
   background-attachment: scroll;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
-  color: #F2EEE7;
-  /* Colores locales: el hero es siempre oscuro, en ambos temas */
-  --ink: #F7F4EF;
-  --ink-2: rgba(247, 244, 239, .74);
-  --border: rgba(247, 244, 239, .18);
-  --border-strong: rgba(247, 244, 239, .34);
-  --surface: rgba(255, 255, 255, .06);
-  --surface-2: rgba(255, 255, 255, .08);
+  color: var(--ink);
+  text-shadow: none;
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hero { background-attachment: fixed; }
+}
+
+/* Modo oscuro: fondo generativo oscuro original, con su matiz propio */
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(13,18,19,.35) 0%, rgba(13,18,19,.72) 88%),
+      url('../img/hero-bg.svg');
+    background-color: #14191A;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, .3);
+  }
+}
+:root[data-theme="dark"] .hero {
+  background-image:
+    linear-gradient(180deg, rgba(13,18,19,.35) 0%, rgba(13,18,19,.72) 88%),
+    url('../img/hero-bg.svg');
+  background-color: #14191A;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .3);
+}
+:root[data-theme="light"] .hero {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.55) 88%),
+    url('../img/hero-bg-light.svg');
+  background-color: var(--paper);
+  text-shadow: none;
 }
 
 /* Palos ambiente: motivo de marca en deriva lenta, apagado si se pide menos movimiento */
@@ -630,7 +662,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 /* Un color por palo, mismo trazo: diamante naranja, pica gris, corazón rojo, trébol verde */
 .hero__motes .m1 { width: 30px; top: 12%;  left: 6%;  color: #D97F2E; animation: drift-a 15s ease-in-out infinite; }
-.hero__motes .m2 { width: 22px; top: 68%;  left: 10%; color: #E7E1D6; animation: drift-b 19s ease-in-out infinite; animation-delay: -4s; }
+.hero__motes .m2 { width: 22px; top: 68%;  left: 10%; color: var(--aba-slate); animation: drift-b 19s ease-in-out infinite; animation-delay: -4s; }
 .hero__motes .m3 { width: 26px; top: 20%;  left: 90%; color: var(--aba-red); animation: drift-a 17s ease-in-out infinite; animation-delay: -9s; }
 .hero__motes .m4 { width: 34px; top: 78%;  left: 86%; color: #3F8F63; animation: drift-b 21s ease-in-out infinite; animation-delay: -6s; }
 
@@ -668,13 +700,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero .btn-row { justify-content: center; }
 
 .hero h1 {
-  color: #fff;
+  color: var(--ink);
   font-size: var(--fs-5xl);
   font-weight: 600;
   letter-spacing: -.022em;
   line-height: 1.03;
   margin-bottom: var(--space-5);
-  text-shadow: 0 2px 24px rgba(0,0,0,.3);
+  text-shadow: inherit; /* la sombra sólo se activa en modo oscuro, ver regla de .hero */
 }
 .hero h1 em {
   font-style: italic;
@@ -1190,16 +1222,37 @@ table.data td.num, table.data th.num { font-variant-numeric: tabular-nums; }
 .affil {
   position: relative;
   isolation: isolate;
+  /* Por defecto (modo claro): igual criterio que el hero — hereda los
+     tokens del tema activo en vez de forzar siempre el tratamiento
+     oscuro. */
   background:
-    linear-gradient(180deg, rgba(13,18,19,.82) 0%, rgba(19,26,27,.9) 100%),
-    url('../img/hero-bg.svg') center 78% / cover no-repeat #14191A;
-  color: #F2EEE7;
-  --ink: #F7F4EF;
-  --ink-2: rgba(247, 244, 239, .72);
-  --border: rgba(247, 244, 239, .16);
+    linear-gradient(180deg, rgba(255,255,255,.75) 0%, rgba(251,250,248,.9) 100%),
+    url('../img/hero-bg-light.svg') center 78% / cover no-repeat var(--paper);
+  color: var(--ink);
 }
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .affil { background-attachment: fixed; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .affil {
+    background-image:
+      linear-gradient(180deg, rgba(13,18,19,.82) 0%, rgba(19,26,27,.9) 100%),
+      url('../img/hero-bg.svg');
+    background-color: #14191A;
+  }
+}
+:root[data-theme="dark"] .affil {
+  background-image:
+    linear-gradient(180deg, rgba(13,18,19,.82) 0%, rgba(19,26,27,.9) 100%),
+    url('../img/hero-bg.svg');
+  background-color: #14191A;
+}
+:root[data-theme="light"] .affil {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.75) 0%, rgba(251,250,248,.9) 100%),
+    url('../img/hero-bg-light.svg');
+  background-color: var(--paper);
 }
 
 .affil__list {
@@ -1243,7 +1296,7 @@ a.affil__item:hover .affil__logo, a.affil__item:focus-visible .affil__logo {
 }
 .affil__name {
   font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 600;
-  color: #fff; line-height: 1.25;
+  color: var(--ink); line-height: 1.25;
   text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .22em;
   transition: text-decoration-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
