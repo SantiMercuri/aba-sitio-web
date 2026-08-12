@@ -962,7 +962,12 @@ a.event:hover {
 .crumbs li + li::before { content: "/"; margin-right: var(--space-2); color: var(--border-strong); }
 
 /* Índice lateral pegajoso */
-.with-toc { display: grid; gap: var(--space-7); }
+/* "minmax(0, 1fr)", no "auto": sin esto, el track de grid no tiene
+   límite de achicamiento y crece para acomodar el contenido más ancho
+   de adentro (p. ej. una carta del índice que no se ajusta) en vez de
+   que ese contenido haga salto de línea — así es como el texto termina
+   desbordando el ancho real de la pantalla en mobile. */
+.with-toc { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
 @media (min-width: 1000px) {
   .with-toc { grid-template-columns: 252px minmax(0, 1fr); gap: var(--space-8); align-items: start; }
 }
