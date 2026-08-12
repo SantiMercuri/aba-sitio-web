@@ -151,6 +151,12 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 128px;
+  /* En iOS el recorte horizontal depende de <html>, no sólo de <body>:
+     sin esto, un desborde mínimo (invisible a zoom normal, recortado por
+     el borde de pantalla) se revela "cortado" al hacer zoom out, porque
+     ahí sí se ve el canvas completo alrededor de la página. */
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
