@@ -151,12 +151,15 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 128px;
-  /* En iOS el recorte horizontal depende de <html>, no sólo de <body>:
-     sin esto, un desborde mínimo (invisible a zoom normal, recortado por
-     el borde de pantalla) se revela "cortado" al hacer zoom out, porque
-     ahí sí se ve el canvas completo alrededor de la página. */
+  /* "clip" (no "hidden"): recorta el desborde horizontal en iOS sin
+     crear un contexto de scroll nuevo en <html>. "hidden" fuerza, por
+     especificación, que overflow-y pase a "auto" también acá — eso
+     duplicaba el contenedor de scroll junto con <body> y cortaba el
+     acceso a parte del contenido de la página. La línea "hidden" queda
+     como respaldo: los navegadores sin soporte de "clip" ignoran la
+     siguiente y se quedan con esta. */
   overflow-x: hidden;
-  max-width: 100%;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -174,6 +177,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-x: clip;
   /* Redondea las curvas de Fraunces (eje variable "SOFT") en todo lo que
      herede esta propiedad. Las demás fuentes, sin ese eje, la ignoran. */
   font-variation-settings: "SOFT" 62;
